@@ -27,7 +27,7 @@ const spmuServices = services.filter(s => s.category === 'spmu');
 
       <!-- Skincare Services -->
       <FadeIn client:load delay={0.1}>
-        <div class="mb-20">
+        <div class="border-t border-nude-beige/30 pt-12 mb-20">
           <h2 class="text-3xl font-heading font-semibold text-dark-brown mb-8 text-center">Skincare</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {skincareServices.map((service, index) => (
@@ -43,7 +43,7 @@ const spmuServices = services.filter(s => s.category === 'spmu');
 
       <!-- Brows Services -->
       <FadeIn client:load delay={0.2}>
-        <div class="mb-20">
+        <div class="border-t border-nude-beige/30 pt-12 mb-20">
           <h2 class="text-3xl font-heading font-semibold text-dark-brown mb-8 text-center">Brows</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {browsServices.map((service, index) => (
@@ -59,7 +59,7 @@ const spmuServices = services.filter(s => s.category === 'spmu');
 
       <!-- SPMU Services -->
       <FadeIn client:load delay={0.3}>
-        <div class="mb-20">
+        <div class="border-t border-nude-beige/30 pt-12 mb-20">
           <h2 class="text-3xl font-heading font-semibold text-dark-brown mb-8 text-center">Semi-Permanent Makeup (SPMU)</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {spmuServices.map((service, index) => (
@@ -75,7 +75,8 @@ const spmuServices = services.filter(s => s.category === 'spmu');
 
       <!-- CTA -->
       <FadeIn client:load delay={0.4}>
-        <div class="text-center bg-gradient-to-r from-blush-pink/20 to-nude-beige/30 rounded-2xl p-12">
+        <div class="border-t border-nude-beige/30 pt-12">
+          <div class="text-center bg-gradient-to-r from-blush-pink/20 to-nude-beige/30 rounded-2xl p-12">
           <h2 class="text-2xl font-heading font-semibold text-dark-brown mb-4">
             Ready to Book Your Service?
           </h2>
@@ -88,6 +89,7 @@ const spmuServices = services.filter(s => s.category === 'spmu');
           >
             Book Now
           </a>
+          </div>
         </div>
       </FadeIn>
     </div>

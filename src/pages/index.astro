@@ -2,9 +2,11 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import ServiceCard from '@components/ServiceCard.astro';
 import GalleryCard from '@components/GalleryCard.astro';
+import TestimonialSlider from '@components/TestimonialSlider.tsx';
 import FadeIn from '@components/FadeIn';
 import { services } from '@data/services';
 import { galleryItems } from '@data/gallery';
+import { testimonials } from '@data/testimonials';
 
 const featuredServices = services.slice(0, 3);
 const featuredGallery = galleryItems.slice(0, 6);
@@ -35,7 +37,7 @@ const featuredGallery = galleryItems.slice(0, 6);
   </section>
 
   <!-- Services Preview -->
-  <section class="py-20 bg-white">
+  <section class="py-20 bg-white border-t border-nude-beige/30">
     <div class="container mx-auto px-4">
       <FadeIn client:load>
         <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown text-center mb-4">
@@ -74,7 +76,7 @@ const featuredGallery = galleryItems.slice(0, 6);
   </section>
 
   <!-- Gallery Preview -->
-  <section class="py-20 bg-nude-beige/10">
+  <section class="py-20 bg-nude-beige/10 border-t border-nude-beige/30">
     <div class="container mx-auto px-4">
       <FadeIn client:load>
         <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown text-center mb-4">
@@ -105,7 +107,7 @@ const featuredGallery = galleryItems.slice(0, 6);
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20 bg-gradient-to-r from-blush-pink/20 to-nude-beige/30">
+  <section class="py-20 bg-gradient-to-r from-blush-pink/20 to-nude-beige/30 border-t border-nude-beige/30">
     <div class="container mx-auto px-4 text-center">
       <FadeIn client:load>
         <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown mb-6">
@@ -121,6 +123,21 @@ const featuredGallery = galleryItems.slice(0, 6);
           Schedule Now
         </a>
       </FadeIn>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-16 bg-white border-t border-nude-beige/30">
+    <div class="container mx-auto px-4">
+      <FadeIn client:load>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown text-center mb-4">
+          What Our Clients Say
+        </h2>
+        <p class="text-dark-brown/70 text-center mb-8 max-w-2xl mx-auto">
+          Don't just take our word for it - hear from our satisfied clients.
+        </p>
+      </FadeIn>
+      <TestimonialSlider client:load testimonials={testimonials} />
     </div>
   </section>
 </BaseLayout>
