@@ -1,0 +1,126 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import GalleryCard from '@components/GalleryCard.astro';
+import FadeIn from '@components/FadeIn';
+import { services } from '@data/services';
+import { galleryItems } from '@data/gallery';
+
+const featuredServices = services.slice(0, 3);
+const featuredGallery = galleryItems.slice(0, 6);
+---
+
+<BaseLayout title="Home" description="JTIKS - Premium Beauty Services. Experience luxury skincare, SPMU, brows, and masterclasses.">
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-nude-beige/30 via-white to-blush-pink/20 py-20 md:py-32">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <FadeIn client:load>
+          <h1 class="text-4xl md:text-6xl font-heading font-bold text-dark-brown mb-6 text-balance">
+            Elevate Your Beauty Journey
+          </h1>
+          <p class="text-lg md:text-xl text-dark-brown/70 mb-8 text-balance">
+            Discover premium beauty services crafted with elegance and expertise. 
+            From luxurious skincare to transformative SPMU, we bring out your natural radiance.
+          </p>
+          <a 
+            href="/booking" 
+            class="inline-block bg-blush-pink text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-blush-pink/90 transition-colors shadow-lg"
+          >
+            Book Your Appointment
+          </a>
+        </FadeIn>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Preview -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <FadeIn client:load>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown text-center mb-4">
+          Our Services
+        </h2>
+        <p class="text-dark-brown/70 text-center mb-12 max-w-2xl mx-auto">
+          Experience our range of premium beauty treatments designed to enhance your natural beauty.
+        </p>
+      </FadeIn>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {featuredServices.map((service, index) => (
+          <FadeIn client:load delay={index * 0.1}>
+            <ServiceCard service={service} />
+          </FadeIn>
+        ))}
+      </div>
+      
+      <div class="text-center mt-12">
+        <a 
+          href="/services" 
+          class="inline-block text-gold hover:text-gold/80 font-medium transition-colors mb-6"
+        >
+          View All Services →
+        </a>
+        <div>
+          <a 
+            href="/booking" 
+            class="inline-block bg-blush-pink text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-blush-pink/90 transition-colors"
+          >
+            Book Your Appointment
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Preview -->
+  <section class="py-20 bg-nude-beige/10">
+    <div class="container mx-auto px-4">
+      <FadeIn client:load>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown text-center mb-4">
+          Our Work
+        </h2>
+        <p class="text-dark-brown/70 text-center mb-12 max-w-2xl mx-auto">
+          Explore our portfolio of beautiful transformations and artistry.
+        </p>
+      </FadeIn>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        {featuredGallery.map((item, index) => (
+          <FadeIn client:load delay={index * 0.05}>
+            <GalleryCard item={item} />
+          </FadeIn>
+        ))}
+      </div>
+      
+      <div class="text-center mt-12">
+        <a 
+          href="/gallery" 
+          class="inline-block text-gold hover:text-gold/80 font-medium transition-colors"
+        >
+          View Full Gallery →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-blush-pink/20 to-nude-beige/30">
+    <div class="container mx-auto px-4 text-center">
+      <FadeIn client:load>
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown mb-6">
+          Ready to Begin Your Journey?
+        </h2>
+        <p class="text-lg text-dark-brown/70 mb-8 max-w-2xl mx-auto">
+          Book your appointment today and experience the JTIKS difference.
+        </p>
+        <a 
+          href="/booking" 
+          class="inline-block bg-gold text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-gold/90 transition-colors shadow-lg"
+        >
+          Schedule Now
+        </a>
+      </FadeIn>
+    </div>
+  </section>
+</BaseLayout>

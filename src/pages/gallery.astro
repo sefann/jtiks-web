@@ -1,0 +1,75 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import GalleryCard from '@components/GalleryCard.astro';
+import FadeIn from '@components/FadeIn';
+import { galleryItems } from '@data/gallery';
+
+const categories = ['all', 'skincare', 'brows', 'spmu'] as const;
+let selectedCategory = 'all';
+
+// Get category from URL params
+if (Astro.url.searchParams.has('category')) {
+  const param = Astro.url.searchParams.get('category');
+  if (categories.includes(param as any)) {
+    selectedCategory = param as typeof selectedCategory;
+  }
+}
+
+const filteredItems = selectedCategory === 'all' 
+  ? galleryItems 
+  : galleryItems.filter(item => item.category === selectedCategory);
+---
+
+<BaseLayout 
+  title="Gallery" 
+  description="View our portfolio of beautiful transformations and artistry in skincare, brows, and SPMU."
+>
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <FadeIn client:load>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-dark-brown mb-4 text-center">
+          Gallery
+        </h1>
+        <p class="text-dark-brown/70 text-center mb-12 max-w-2xl mx-auto">
+          Explore our portfolio of beautiful transformations and artistry.
+        </p>
+      </FadeIn>
+
+      <!-- Filter Buttons -->
+      <FadeIn client:load delay={0.1}>
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((category) => (
+            <a
+              href={`/gallery?category=${category}`}
+              class={`px-6 py-2 rounded-full transition-colors ${
+                selectedCategory === category
+                  ? 'bg-blush-pink text-white'
+                  : 'bg-nude-beige/30 text-dark-brown hover:bg-nude-beige/50'
+              }`}
+            >
+              {category.charAt(0).toUpperCase() + category.slice(1)}
+            </a>
+          ))}
+        </div>
+      </FadeIn>
+
+      <!-- Gallery Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {filteredItems.map((item, index) => (
+          <FadeIn client:load delay={index * 0.05}>
+            <GalleryCard item={item} />
+          </FadeIn>
+        ))}
+      </div>
+
+      {filteredItems.length === 0 && (
+        <FadeIn client:load>
+          <div class="text-center py-12">
+            <p class="text-dark-brown/70">No items found in this category.</p>
+          </div>
+        </FadeIn>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+

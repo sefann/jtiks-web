@@ -1,0 +1,118 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import ServiceCard from '@components/ServiceCard.astro';
+import ServiceModalWrapper from '@components/ServiceModalWrapper.tsx';
+import FadeIn from '@components/FadeIn';
+import { services } from '@data/services';
+
+const skincareServices = services.filter(s => s.category === 'skincare');
+const browsServices = services.filter(s => s.category === 'brows');
+const spmuServices = services.filter(s => s.category === 'spmu');
+---
+
+<BaseLayout 
+  title="Services" 
+  description="Explore our premium beauty services: Skincare, Brows, and Semi-Permanent Makeup (SPMU)."
+>
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <FadeIn client:load>
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-dark-brown mb-4 text-center">
+          Our Services
+        </h1>
+        <p class="text-dark-brown/70 text-center mb-12 max-w-2xl mx-auto">
+          Discover our comprehensive range of premium beauty treatments designed to enhance your natural beauty.
+        </p>
+      </FadeIn>
+
+      <!-- Skincare Services -->
+      <FadeIn client:load delay={0.1}>
+        <div class="mb-20">
+          <h2 class="text-3xl font-heading font-semibold text-dark-brown mb-8 text-center">Skincare</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {skincareServices.map((service, index) => (
+              <FadeIn client:load delay={0.1 + index * 0.1}>
+                <div id={service.id}>
+                  <ServiceCard service={service} showLearnMore={true} />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </FadeIn>
+
+      <!-- Brows Services -->
+      <FadeIn client:load delay={0.2}>
+        <div class="mb-20">
+          <h2 class="text-3xl font-heading font-semibold text-dark-brown mb-8 text-center">Brows</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {browsServices.map((service, index) => (
+              <FadeIn client:load delay={0.1 + index * 0.1}>
+                <div id={service.id}>
+                  <ServiceCard service={service} showLearnMore={true} />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </FadeIn>
+
+      <!-- SPMU Services -->
+      <FadeIn client:load delay={0.3}>
+        <div class="mb-20">
+          <h2 class="text-3xl font-heading font-semibold text-dark-brown mb-8 text-center">Semi-Permanent Makeup (SPMU)</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {spmuServices.map((service, index) => (
+              <FadeIn client:load delay={0.1 + index * 0.1}>
+                <div id={service.id}>
+                  <ServiceCard service={service} showLearnMore={true} />
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </FadeIn>
+
+      <!-- CTA -->
+      <FadeIn client:load delay={0.4}>
+        <div class="text-center bg-gradient-to-r from-blush-pink/20 to-nude-beige/30 rounded-2xl p-12">
+          <h2 class="text-2xl font-heading font-semibold text-dark-brown mb-4">
+            Ready to Book Your Service?
+          </h2>
+          <p class="text-dark-brown/70 mb-6">
+            Schedule your appointment and experience the JTIKS difference.
+          </p>
+          <a 
+            href="/booking" 
+            class="inline-block bg-blush-pink text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-blush-pink/90 transition-colors"
+          >
+            Book Now
+          </a>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+
+  <ServiceModalWrapper client:load />
+
+  <script define:vars={{ services }}>
+    // Add event listeners to Learn More buttons
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('[data-service-id]');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const serviceId = button.getAttribute('data-service-id');
+          if (serviceId) {
+            const service = services.find(s => s.id === serviceId);
+            if (service) {
+              // Dispatch custom event to open modal
+              window.dispatchEvent(new CustomEvent('openServiceModal', {
+                detail: { service }
+              }));
+            }
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

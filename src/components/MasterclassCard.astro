@@ -1,0 +1,45 @@
+---
+import type { Masterclass } from '@data/masterclasses';
+
+interface Props {
+  masterclass: Masterclass;
+}
+
+const { masterclass } = Astro.props;
+
+const formatPrice = (price: number) => {
+  return new Intl.NumberFormat('en-NG', {
+    style: 'currency',
+    currency: 'NGN',
+  }).format(price);
+};
+---
+
+<div class="bg-white rounded-2xl p-6 shadow-sm border border-nude-beige/30 hover:shadow-md transition-shadow">
+  <h3 class="text-xl font-heading font-semibold text-dark-brown mb-2">{masterclass.title}</h3>
+  <p class="text-dark-brown/70 text-sm mb-4">{masterclass.description}</p>
+  
+  <div class="mb-4">
+    <h4 class="text-sm font-semibold text-dark-brown mb-2">What you'll learn:</h4>
+    <ul class="list-disc list-inside text-sm text-dark-brown/70 space-y-1">
+      {masterclass.learnings.map((learning) => (
+        <li>{learning}</li>
+      ))}
+    </ul>
+  </div>
+  
+  <div class="flex items-center justify-between mb-4">
+    <span class="text-sm text-dark-brown/60">Duration: {masterclass.duration}</span>
+    <span class="text-lg font-heading font-semibold text-gold">{formatPrice(masterclass.price)}</span>
+  </div>
+  
+  <a 
+    href={masterclass.paystackLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="block w-full bg-gold text-white text-center px-6 py-3 rounded-full hover:bg-gold/90 transition-colors font-medium"
+  >
+    Enroll Now
+  </a>
+</div>
+

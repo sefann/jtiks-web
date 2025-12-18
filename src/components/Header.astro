@@ -1,0 +1,138 @@
+---
+import { services } from '@data/services';
+
+const skincareServices = services.filter(s => s.category === 'skincare');
+const browsServices = services.filter(s => s.category === 'brows');
+const spmuServices = services.filter(s => s.category === 'spmu');
+---
+
+<header class="bg-white border-b border-nude-beige/30 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+  <nav class="container mx-auto px-4 py-4">
+    <div class="flex items-center justify-between">
+      <a href="/" class="text-2xl font-heading font-bold text-dark-brown hover:text-gold transition-colors">
+        JTIKS
+      </a>
+      
+      <ul class="hidden md:flex items-center gap-8">
+        <li><a href="/" class="text-dark-brown hover:text-gold transition-colors">Home</a></li>
+        <li><a href="/about" class="text-dark-brown hover:text-gold transition-colors">About</a></li>
+        <li class="relative group">
+          <a href="/services" class="text-dark-brown hover:text-gold transition-colors flex items-center gap-1">
+            Services
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </a>
+          <!-- Dropdown Menu -->
+          <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-2xl shadow-lg border border-nude-beige/30 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <div class="p-4">
+              <div class="mb-4">
+                <h3 class="text-sm font-semibold text-dark-brown mb-2 uppercase tracking-wide">Skincare</h3>
+                <ul class="space-y-1">
+                  {skincareServices.map((service) => (
+                    <li>
+                      <a href={`/services#${service.id}`} class="block px-3 py-2 text-sm text-dark-brown/70 hover:text-gold hover:bg-nude-beige/20 rounded-lg transition-colors">
+                        {service.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="mb-4">
+                <h3 class="text-sm font-semibold text-dark-brown mb-2 uppercase tracking-wide">Brows</h3>
+                <ul class="space-y-1">
+                  {browsServices.map((service) => (
+                    <li>
+                      <a href={`/services#${service.id}`} class="block px-3 py-2 text-sm text-dark-brown/70 hover:text-gold hover:bg-nude-beige/20 rounded-lg transition-colors">
+                        {service.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-dark-brown mb-2 uppercase tracking-wide">SPMU</h3>
+                <ul class="space-y-1">
+                  {spmuServices.map((service) => (
+                    <li>
+                      <a href={`/services#${service.id}`} class="block px-3 py-2 text-sm text-dark-brown/70 hover:text-gold hover:bg-nude-beige/20 rounded-lg transition-colors">
+                        {service.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="mt-4 pt-4 border-t border-nude-beige/30">
+                <a href="/services" class="block px-3 py-2 text-sm font-medium text-gold hover:bg-gold/10 rounded-lg transition-colors text-center">
+                  View All Services →
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="/gallery" class="text-dark-brown hover:text-gold transition-colors">Gallery</a></li>
+        <li><a href="/masterclasses" class="text-dark-brown hover:text-gold transition-colors">Masterclasses</a></li>
+        <li><a href="/booking" class="bg-blush-pink text-white px-6 py-2 rounded-full hover:bg-blush-pink/90 transition-colors">Book Now</a></li>
+        <li><a href="/contact" class="text-dark-brown hover:text-gold transition-colors">Contact</a></li>
+      </ul>
+      
+      <button class="md:hidden text-dark-brown" id="mobile-menu-btn" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    
+    <div class="md:hidden hidden mt-4" id="mobile-menu">
+      <ul class="flex flex-col gap-4">
+        <li><a href="/" class="block text-dark-brown hover:text-gold transition-colors">Home</a></li>
+        <li><a href="/about" class="block text-dark-brown hover:text-gold transition-colors">About</a></li>
+        <li>
+          <a href="/services" class="block text-dark-brown hover:text-gold transition-colors font-semibold mb-2">Services</a>
+          <ul class="ml-4 space-y-2">
+            <li class="text-sm font-semibold text-dark-brown/60 uppercase mt-3 mb-1">Skincare</li>
+            {skincareServices.map((service) => (
+              <li>
+                <a href={`/services#${service.id}`} class="block text-dark-brown/70 hover:text-gold transition-colors text-sm">
+                  {service.title}
+                </a>
+              </li>
+            ))}
+            <li class="text-sm font-semibold text-dark-brown/60 uppercase mt-3 mb-1">Brows</li>
+            {browsServices.map((service) => (
+              <li>
+                <a href={`/services#${service.id}`} class="block text-dark-brown/70 hover:text-gold transition-colors text-sm">
+                  {service.title}
+                </a>
+              </li>
+            ))}
+            <li class="text-sm font-semibold text-dark-brown/60 uppercase mt-3 mb-1">SPMU</li>
+            {spmuServices.map((service) => (
+              <li>
+                <a href={`/services#${service.id}`} class="block text-dark-brown/70 hover:text-gold transition-colors text-sm">
+                  {service.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </li>
+        <li><a href="/gallery" class="block text-dark-brown hover:text-gold transition-colors">Gallery</a></li>
+        <li><a href="/masterclasses" class="block text-dark-brown hover:text-gold transition-colors">Masterclasses</a></li>
+        <li><a href="/booking" class="block bg-blush-pink text-white px-6 py-2 rounded-full text-center">Book Now</a></li>
+        <li><a href="/contact" class="block text-dark-brown hover:text-gold transition-colors">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>
+
