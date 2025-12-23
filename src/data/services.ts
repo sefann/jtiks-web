@@ -17,7 +17,7 @@ export const services: Service[] = [
     fullDescription: 'Our Luxury Facial Treatment is a comprehensive skincare experience designed to deeply hydrate, rejuvenate, and restore your skin\'s natural radiance. Using premium, carefully selected products tailored to your unique skin type, this treatment addresses specific concerns while providing a relaxing, spa-like experience.',
     duration: '90 minutes',
     category: 'skincare',
-    image: '/images/services/luxury-facial.jpg',
+    image: '/images/im1.png',
     benefits: [
       'Deep hydration and moisture restoration',
       'Improved skin texture and tone',
@@ -33,7 +33,7 @@ export const services: Service[] = [
     fullDescription: 'Our Anti-Aging Therapy is a powerful, results-driven treatment that targets the visible signs of aging. Using advanced techniques and premium anti-aging products, this comprehensive therapy works to reduce fine lines, wrinkles, and improve skin elasticity for a more youthful, radiant complexion.',
     duration: '120 minutes',
     category: 'skincare',
-    image: '/images/services/anti-aging.jpg',
+    image: '/images/im3.png',
     benefits: [
       'Reduced fine lines and wrinkles',
       'Improved skin elasticity and firmness',
@@ -49,7 +49,7 @@ export const services: Service[] = [
     fullDescription: 'Achieve perfectly shaped, defined brows with our professional Brow Shaping & Tinting service. Our expert technicians analyze your facial features to create the ideal brow shape that complements your natural beauty, then apply professional-grade tinting for enhanced definition and fullness.',
     duration: '45 minutes',
     category: 'brows',
-    image: '/images/services/brow-shaping.jpg',
+    image: '/images/im5.png',
     benefits: [
       'Perfectly shaped brows for your face',
       'Enhanced brow definition and fullness',
@@ -65,7 +65,7 @@ export const services: Service[] = [
     fullDescription: 'Transform your brows with our expert Microblading service. Using fine, precise strokes that mimic natural hair, we create fuller, perfectly shaped eyebrows that last. This semi-permanent solution is ideal for those seeking low-maintenance, natural-looking brows that enhance your facial features.',
     duration: '120 minutes',
     category: 'brows',
-    image: '/images/services/microblading.jpg',
+    image: '/images/im4.png',
     benefits: [
       'Natural-looking hair-like strokes',
       'Semi-permanent results (12-18 months)',
@@ -81,7 +81,7 @@ export const services: Service[] = [
     fullDescription: 'Enhance your natural lip color and definition with our Lip Blush service. This semi-permanent makeup technique adds a subtle, natural-looking tint to your lips, creating fuller-looking lips with enhanced definition. Perfect for those who want to wake up with beautiful, defined lips every day.',
     duration: '120 minutes',
     category: 'spmu',
-    image: '/images/services/lip-blush.jpg',
+    image: '/images/im6.png',
     benefits: [
       'Natural-looking lip color enhancement',
       'Improved lip definition and shape',
@@ -97,7 +97,7 @@ export const services: Service[] = [
     fullDescription: 'Define your eyes with our Semi-Permanent Eyeliner Enhancement. Whether you prefer a subtle lash line enhancement or a more dramatic look, our expert technicians create the perfect eyeliner that complements your eye shape and personal style. Wake up every day with perfectly defined eyes.',
     duration: '90 minutes',
     category: 'spmu',
-    image: '/images/services/eyeliner.jpg',
+    image: '/images/im7.png',
     benefits: [
       'Perfectly defined eyes every day',
       'Semi-permanent results (2-3 years)',

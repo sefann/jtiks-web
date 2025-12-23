@@ -1,27 +1,59 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-import ServiceCard from '@components/ServiceCard.astro';
-import GalleryCard from '@components/GalleryCard.astro';
 import TestimonialSlider from '@components/TestimonialSlider.tsx';
+import ImageSlider from '@components/ImageSlider.tsx';
+import PortraitVideo from '@components/PortraitVideo.tsx';
 import FadeIn from '@components/FadeIn';
 import { services } from '@data/services';
-import { galleryItems } from '@data/gallery';
 import { testimonials } from '@data/testimonials';
 
-const featuredServices = services.slice(0, 3);
-const featuredGallery = galleryItems.slice(0, 6);
+// Service images
+const skincareImages = [
+  '/images/skin1.png',
+  '/images/skin2.png',
+  '/images/skin3.png',
+  '/images/skin4.png',
+];
+
+const spmuImages = [
+  '/images/spmu1.png',
+  '/images/spmu2.png',
+  '/images/spmu3.png',
+  '/images/spmu4.png',
+];
+
+// Brows video
+const browsVideo = '/images/tiks-vid.MP4';
+const browsVideoPoster = '/images/tiks1.PNG';
+
+const skincareServices = services.filter(s => s.category === 'skincare');
+const browsServices = services.filter(s => s.category === 'brows');
+const spmuServices = services.filter(s => s.category === 'spmu');
 ---
 
 <BaseLayout title="Home" description="JTIKS - Premium Beauty Services. Experience luxury skincare, SPMU, brows, and masterclasses.">
   <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-nude-beige/30 via-white to-blush-pink/20 py-20 md:py-32">
-    <div class="container mx-auto px-4">
+  <section class="relative py-20 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        class="w-full h-full object-cover"
+        aria-hidden="true"
+      >
+        <source src="/images/tiks-vid.MP4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 bg-black/50"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-3xl mx-auto text-center">
         <FadeIn client:load>
-          <h1 class="text-4xl md:text-6xl font-heading font-bold text-dark-brown mb-6 text-balance">
+          <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-6 text-balance">
             Elevate Your Beauty Journey
           </h1>
-          <p class="text-lg md:text-xl text-dark-brown/70 mb-8 text-balance">
+          <p class="text-lg md:text-xl text-white/90 mb-8 text-balance">
             Discover premium beauty services crafted with elegance and expertise. 
             From luxurious skincare to transformative SPMU, we bring out your natural radiance.
           </p>
@@ -36,104 +68,166 @@ const featuredGallery = galleryItems.slice(0, 6);
     </div>
   </section>
 
-  <!-- Services Preview -->
-  <section class="py-20 bg-white border-t border-nude-beige/30">
-    <div class="container mx-auto px-4">
+  <!-- Services Preview & Skincare Section -->
+  <section class="py-12 border-t border-nude-beige/30 relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="/images/27.png" 
+        alt="" 
+        class="w-full h-full object-cover"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-white/80"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
       <FadeIn client:load>
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown text-center mb-4">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown text-center mb-2">
           Our Services
         </h2>
-        <p class="text-dark-brown/70 text-center mb-12 max-w-2xl mx-auto">
+        <p class="text-dark-brown/70 text-center mb-8 max-w-2xl mx-auto">
           Experience our range of premium beauty treatments designed to enhance your natural beauty.
         </p>
       </FadeIn>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {featuredServices.map((service, index) => (
-          <FadeIn client:load delay={index * 0.1}>
-            <ServiceCard service={service} />
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto mt-8">
+            <FadeIn client:load>
+              <div>
+                <h3 class="text-2xl md:text-3xl font-heading font-bold text-dark-brown mb-3">
+                  Skincare
+                </h3>
+              <p class="text-dark-brown/70 mb-4 leading-relaxed">
+                Indulge in our luxurious skincare treatments designed to rejuvenate and restore your skin's natural radiance. 
+                Our expert estheticians use premium products and advanced techniques to address your unique skin concerns, 
+                leaving you with a glowing, healthy complexion.
+              </p>
+              <p class="text-dark-brown/70 mb-6 leading-relaxed">
+                From deep hydration facials to advanced anti-aging therapies, we offer comprehensive skincare solutions 
+                tailored to your individual needs.
+              </p>
+              <a 
+                href="/services#skincare" 
+                class="inline-block bg-blush-pink text-white px-6 py-3 rounded-full text-base font-medium hover:bg-blush-pink/90 transition-colors"
+              >
+                Learn More
+              </a>
+            </div>
           </FadeIn>
-        ))}
-      </div>
-      
-      <div class="text-center mt-12">
-        <a 
-          href="/services" 
-          class="inline-block text-gold hover:text-gold/80 font-medium transition-colors mb-6"
-        >
-          View All Services →
-        </a>
-        <div>
-          <a 
-            href="/booking" 
-            class="inline-block bg-blush-pink text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-blush-pink/90 transition-colors"
-          >
-            Book Your Appointment
-          </a>
+          <FadeIn client:load delay={0.2}>
+            <ImageSlider client:load images={skincareImages} alt="Skincare services" />
+          </FadeIn>
         </div>
-      </div>
     </div>
   </section>
 
-  <!-- Gallery Preview -->
-  <section class="py-20 bg-nude-beige/10 border-t border-nude-beige/30">
-    <div class="container mx-auto px-4">
-      <FadeIn client:load>
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown text-center mb-4">
-          Our Work
-        </h2>
-        <p class="text-dark-brown/70 text-center mb-12 max-w-2xl mx-auto">
-          Explore our portfolio of beautiful transformations and artistry.
-        </p>
-      </FadeIn>
-      
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {featuredGallery.map((item, index) => (
-          <FadeIn client:load delay={index * 0.05}>
-            <GalleryCard item={item} />
-          </FadeIn>
-        ))}
-      </div>
-      
-      <div class="text-center mt-12">
-        <a 
-          href="/gallery" 
-          class="inline-block text-gold hover:text-gold/80 font-medium transition-colors"
-        >
-          View Full Gallery →
-        </a>
-      </div>
+  <!-- Brows Section -->
+  <section class="py-12 border-t border-nude-beige/30 relative">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="/images/16.png" 
+        alt="" 
+        class="w-full h-full object-cover"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-black/60"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+            <FadeIn client:load delay={0.1}>
+              <div>
+                <h3 class="text-2xl md:text-3xl font-heading font-bold text-white mb-3">
+                  Brows
+                </h3>
+                <p class="text-white/90 mb-4 leading-relaxed">
+                  Transform your brows with our expert shaping, tinting, and microblading services. 
+                  Our skilled technicians work with you to create the perfect brow shape that enhances your natural features 
+                  and frames your face beautifully.
+                </p>
+                <p class="text-white/90 mb-4 leading-relaxed">
+                  Whether you're looking for a subtle enhancement or a complete brow transformation, 
+                  we offer professional solutions that deliver stunning, long-lasting results.
+                </p>
+                <p class="text-white/90 mb-6 leading-relaxed">
+                  Our brow artistry combines precision techniques with artistic vision, ensuring that each client receives 
+                  personalized attention and results that complement their unique facial structure. From natural-looking 
+                  enhancements to bold, defined arches, we create brows that frame your eyes and elevate your entire look.
+                </p>
+                <a 
+                  href="/services#brows" 
+                  class="inline-block bg-blush-pink text-white px-6 py-3 rounded-full text-base font-medium hover:bg-blush-pink/90 transition-colors"
+                >
+                  Learn More
+                </a>
+              </div>
+            </FadeIn>
+            <FadeIn client:load delay={0.3}>
+              <PortraitVideo client:load videoSrc={browsVideo} poster={browsVideoPoster} alt="Brows services video" />
+            </FadeIn>
+        </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="py-20 bg-gradient-to-r from-blush-pink/20 to-nude-beige/30 border-t border-nude-beige/30">
-    <div class="container mx-auto px-4 text-center">
-      <FadeIn client:load>
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown mb-6">
-          Ready to Begin Your Journey?
-        </h2>
-        <p class="text-lg text-dark-brown/70 mb-8 max-w-2xl mx-auto">
-          Book your appointment today and experience the JTIKS difference.
-        </p>
-        <a 
-          href="/booking" 
-          class="inline-block bg-gold text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-gold/90 transition-colors shadow-lg"
-        >
-          Schedule Now
-        </a>
-      </FadeIn>
+  <!-- Divider -->
+  <div class="border-t border-nude-beige/30"></div>
+
+  <!-- SPMU Section -->
+  <section class="py-12 border-t border-nude-beige/30 relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="/images/27.png" 
+        alt="" 
+        class="w-full h-full object-cover"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-white/80"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+        <FadeIn client:load delay={0.2}>
+          <div>
+            <h3 class="text-2xl md:text-3xl font-heading font-bold text-dark-brown mb-3">
+              Semi-Permanent Makeup (SPMU)
+            </h3>
+            <p class="text-dark-brown/70 mb-4 leading-relaxed">
+              Wake up every day with perfectly defined features. Our semi-permanent makeup services include 
+              lip blush, eyeliner enhancement, and more. Using advanced techniques and premium pigments, 
+              we create natural-looking results that enhance your beauty effortlessly.
+            </p>
+            <p class="text-dark-brown/70 mb-6 leading-relaxed">
+              Save time on your daily makeup routine while maintaining a polished, professional appearance 
+              with our long-lasting SPMU treatments.
+            </p>
+            <a 
+              href="/services#spmu" 
+              class="inline-block bg-blush-pink text-white px-6 py-3 rounded-full text-base font-medium hover:bg-blush-pink/90 transition-colors"
+            >
+              Learn More
+            </a>
+          </div>
+        </FadeIn>
+        <FadeIn client:load delay={0.4}>
+          <ImageSlider client:load images={spmuImages} alt="SPMU services" />
+        </FadeIn>
+      </div>
     </div>
   </section>
 
   <!-- Testimonials Section -->
-  <section class="py-16 bg-white border-t border-nude-beige/30">
-    <div class="container mx-auto px-4">
+  <section class="py-8 relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="/images/back-one.png" 
+        alt="" 
+        class="w-full h-full object-cover"
+        aria-hidden="true"
+        style="min-height: 100%;"
+      />
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
       <FadeIn client:load>
-        <h2 class="text-3xl md:text-4xl font-heading font-bold text-dark-brown text-center mb-4">
+        <h2 class="text-2xl md:text-3xl font-heading font-bold text-dark-brown text-center mb-2">
           What Our Clients Say
         </h2>
-        <p class="text-dark-brown/70 text-center mb-8 max-w-2xl mx-auto">
+        <p class="text-dark-brown/70 text-center mb-6 max-w-2xl mx-auto text-sm">
           Don't just take our word for it - hear from our satisfied clients.
         </p>
       </FadeIn>
@@ -141,3 +235,4 @@ const featuredGallery = galleryItems.slice(0, 6);
     </div>
   </section>
 </BaseLayout>
+

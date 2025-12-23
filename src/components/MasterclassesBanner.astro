@@ -1,0 +1,27 @@
+---
+import FadeIn from '@components/FadeIn';
+---
+
+<section class="relative py-20 md:py-32 overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="/images/tiks-back.png" 
+      alt="" 
+      class="w-full h-full object-cover"
+      aria-hidden="true"
+    />
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+  <div class="container mx-auto px-4 relative z-10">
+    <FadeIn client:load>
+      <h1 class="text-4xl md:text-5xl font-heading font-bold text-white mb-4 text-center">
+        Masterclasses
+      </h1>
+      <p class="text-white/90 text-center mb-12 max-w-2xl mx-auto">
+        Elevate your skills with our comprehensive beauty masterclasses. 
+        Learn from industry experts and master advanced techniques.
+      </p>
+    </FadeIn>
+  </div>
+</section>
+

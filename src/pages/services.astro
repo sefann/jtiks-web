@@ -14,20 +14,44 @@ const spmuServices = services.filter(s => s.category === 'spmu');
   title="Services" 
   description="Explore our premium beauty services: Skincare, Brows, and Semi-Permanent Makeup (SPMU)."
 >
-  <section class="py-20 bg-white">
-    <div class="container mx-auto px-4">
+  <!-- Banner Section -->
+  <section class="relative py-20 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="/images/im2.png" 
+        alt="" 
+        class="w-full h-full object-cover"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-black/70"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
       <FadeIn client:load>
-        <h1 class="text-4xl md:text-5xl font-heading font-bold text-dark-brown mb-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-white mb-4 text-center">
           Our Services
         </h1>
-        <p class="text-dark-brown/70 text-center mb-12 max-w-2xl mx-auto">
+        <p class="text-white/90 text-center mb-12 max-w-2xl mx-auto">
           Discover our comprehensive range of premium beauty treatments designed to enhance your natural beauty.
         </p>
       </FadeIn>
+    </div>
+  </section>
+
+  <section class="py-12 relative overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="/images/27.png" 
+        alt="" 
+        class="w-full h-full object-cover"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-white/80"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
 
       <!-- Skincare Services -->
       <FadeIn client:load delay={0.1}>
-        <div class="border-t border-nude-beige/30 pt-12 mb-20">
+        <div class="pt-12 mb-20">
           <h2 class="text-3xl font-heading font-semibold text-dark-brown mb-8 text-center">Skincare</h2>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {skincareServices.map((service, index) => (
@@ -75,22 +99,37 @@ const spmuServices = services.filter(s => s.category === 'spmu');
 
       <!-- CTA -->
       <FadeIn client:load delay={0.4}>
-        <div class="border-t border-nude-beige/30 pt-12">
-          <div class="text-center bg-gradient-to-r from-blush-pink/20 to-nude-beige/30 rounded-2xl p-12">
-          <h2 class="text-2xl font-heading font-semibold text-dark-brown mb-4">
-            Ready to Book Your Service?
-          </h2>
-          <p class="text-dark-brown/70 mb-6">
-            Schedule your appointment and experience the JTIKS difference.
-          </p>
-          <a 
-            href="/booking" 
-            class="inline-block bg-blush-pink text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-blush-pink/90 transition-colors"
-          >
-            Book Now
-          </a>
+        <section class="py-12 border-t border-nude-beige/30 relative overflow-hidden">
+            <div class="absolute inset-0 z-0">
+              <video
+                autoplay
+                loop
+                muted
+                playsinline
+                class="w-full h-full object-cover"
+                aria-hidden="true"
+              >
+                <source src="/images/backg.mp4" type="video/mp4" />
+              </video>
+              <div class="absolute inset-0 bg-blush-pink/70"></div>
+            </div>
+          <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center">
+              <h2 class="text-2xl md:text-3xl font-heading font-semibold text-white mb-4">
+                Ready to Book Your Service?
+              </h2>
+              <p class="text-white/90 mb-6">
+                Schedule your appointment and experience the JTIKS difference.
+              </p>
+              <a 
+                href="/booking" 
+                class="inline-block bg-blush-pink text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-blush-pink/90 transition-colors shadow-lg"
+              >
+                Book Now
+              </a>
+            </div>
           </div>
-        </div>
+        </section>
       </FadeIn>
     </div>
   </section>

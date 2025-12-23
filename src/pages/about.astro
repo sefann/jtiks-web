@@ -7,23 +7,51 @@ import FadeIn from '@components/FadeIn';
   title="About" 
   description="Learn about JTIKS - our story, philosophy, and commitment to premium beauty services."
 >
-  <section class="py-32 md:py-40 bg-white">
-    <div class="container mx-auto px-4 max-w-6xl">
+  <!-- Banner Section -->
+  <section class="relative py-20 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="/images/18.png" 
+        alt="" 
+        class="w-full h-full object-cover"
+        aria-hidden="true"
+      />
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    <div class="container mx-auto px-4 relative z-10">
       <FadeIn client:load>
-        <h1 class="text-4xl md:text-5xl font-heading font-bold text-dark-brown mb-12 text-center">
+        <h1 class="text-4xl md:text-5xl font-heading font-bold text-white mb-4 text-center">
           About JTIKS
         </h1>
+        <p class="text-white/90 text-center mb-12 max-w-2xl mx-auto">
+          Learn about our story, philosophy, and commitment to premium beauty services.
+        </p>
       </FadeIn>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
 
       <div class="space-y-20">
         <!-- Founder Profile - First Section (Image Left, Text Right) -->
         <FadeIn client:load delay={0.1}>
-          <div class="border-t border-nude-beige/30 pt-12">
-            <div class="flex flex-col md:flex-row gap-8 items-center">
+          <section class="py-12 relative overflow-hidden">
+            <div class="absolute inset-0 z-0">
+              <img 
+                src="/images/27.png" 
+                alt="" 
+                class="w-full h-full object-cover"
+                aria-hidden="true"
+              />
+              <div class="absolute inset-0 bg-white/80"></div>
+            </div>
+            <div class="container mx-auto px-4 relative z-10">
+              <div class="flex flex-col md:flex-row gap-8 items-center max-w-6xl mx-auto">
               <div class="w-full md:w-2/5 mb-4">
                 <div class="aspect-square rounded-2xl overflow-hidden bg-nude-beige/20">
                   <img 
-                    src="/images/about/founder.jpg" 
+                    src="/images/tiks3.JPEG" 
                     alt="JTIKS Founder"
                     class="w-full h-full object-cover"
                     loading="lazy"
@@ -44,13 +72,23 @@ import FadeIn from '@components/FadeIn';
                 </p>
               </div>
             </div>
-          </div>
+          </section>
         </FadeIn>
 
         <!-- Our Story - Second Section (Text Left, Image Right) -->
         <FadeIn client:load delay={0.2}>
-          <div class="border-t border-nude-beige/30 pt-12">
-            <div class="flex flex-col md:flex-row gap-8 items-center">
+          <section class="py-12 border-t border-nude-beige/30 relative overflow-hidden">
+            <div class="absolute inset-0 z-0">
+              <img 
+                src="/images/27.png" 
+                alt="" 
+                class="w-full h-full object-cover"
+                aria-hidden="true"
+              />
+              <div class="absolute inset-0 bg-white/80"></div>
+            </div>
+            <div class="container mx-auto px-4 relative z-10">
+              <div class="flex flex-col md:flex-row gap-8 items-center max-w-6xl mx-auto">
               <div class="w-full md:w-3/5 order-2 md:order-1">
                 <h2 class="text-2xl font-heading font-semibold text-dark-brown mb-4">Our Story</h2>
                 <p class="text-dark-brown/70 leading-relaxed mb-4">
@@ -68,7 +106,7 @@ import FadeIn from '@components/FadeIn';
               <div class="w-full md:w-2/5 order-1 md:order-2 mb-4">
                 <div class="aspect-square rounded-2xl overflow-hidden bg-nude-beige/20">
                   <img 
-                    src="/images/about/our-story.jpg" 
+                    src="/images/tiks4.jpeg" 
                     alt="JTIKS Story"
                     class="w-full h-full object-cover"
                     loading="lazy"
@@ -76,13 +114,13 @@ import FadeIn from '@components/FadeIn';
                 </div>
               </div>
             </div>
-          </div>
+          </section>
         </FadeIn>
 
         <!-- Our Philosophy - Stays the Same -->
         <FadeIn client:load delay={0.3}>
-          <div class="border-t border-nude-beige/30 pt-12">
-            <div class="bg-nude-beige/20 rounded-2xl p-8">
+          <section class="py-12 border-t border-nude-beige/30 bg-nude-beige/20">
+            <div class="container mx-auto px-4 max-w-6xl">
               <h2 class="text-2xl font-heading font-semibold text-dark-brown mb-4">Our Philosophy</h2>
               <p class="text-dark-brown/70 leading-relaxed mb-4">
                 At JTIKS, we believe that beauty is not about conforming to standards, but about enhancing 
@@ -97,13 +135,13 @@ import FadeIn from '@components/FadeIn';
                 <li>Creating a welcoming, luxurious environment</li>
               </ul>
             </div>
-          </div>
+          </section>
         </FadeIn>
 
         <!-- Credentials & Certifications -->
         <FadeIn client:load delay={0.4}>
-          <div class="border-t border-nude-beige/30 pt-12">
-            <div class="bg-blush-pink/10 rounded-2xl p-8">
+          <section class="py-12 border-t border-nude-beige/30 bg-blush-pink/10">
+            <div class="container mx-auto px-4 max-w-6xl">
               <h2 class="text-2xl font-heading font-semibold text-dark-brown mb-4">Credentials & Certifications</h2>
               <p class="text-dark-brown/70 leading-relaxed">
                 JTIKS is committed to maintaining the highest standards of professionalism and safety. 
@@ -111,7 +149,7 @@ import FadeIn from '@components/FadeIn';
                 to ensure you receive the best possible care.
               </p>
             </div>
-          </div>
+          </section>
         </FadeIn>
       </div>
     </div>

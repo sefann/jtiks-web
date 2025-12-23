@@ -7,10 +7,10 @@ const spmuServices = services.filter(s => s.category === 'spmu');
 ---
 
 <header class="bg-white border-b border-nude-beige/30 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
-  <nav class="container mx-auto px-4 py-4">
+  <nav class="container mx-auto px-4">
     <div class="flex items-center justify-between">
-      <a href="/" class="text-2xl font-heading font-bold text-dark-brown hover:text-gold transition-colors">
-        JTIKS
+      <a href="/" class="flex items-center">
+        <img src="/jtiks-logo.svg" alt="JTIKS Logo" class="h-20 md:h-24 w-auto" />
       </a>
       
       <ul class="hidden md:flex items-center gap-8">
@@ -70,7 +70,6 @@ const spmuServices = services.filter(s => s.category === 'spmu');
             </div>
           </div>
         </li>
-        <li><a href="/gallery" class="text-dark-brown hover:text-gold transition-colors">Gallery</a></li>
         <li><a href="/masterclasses" class="text-dark-brown hover:text-gold transition-colors">Masterclasses</a></li>
         <li><a href="/booking" class="bg-blush-pink text-white px-6 py-2 rounded-full hover:bg-blush-pink/90 transition-colors">Book Now</a></li>
         <li><a href="/contact" class="text-dark-brown hover:text-gold transition-colors">Contact</a></li>
@@ -116,7 +115,6 @@ const spmuServices = services.filter(s => s.category === 'spmu');
             ))}
           </ul>
         </li>
-        <li><a href="/gallery" class="block text-dark-brown hover:text-gold transition-colors">Gallery</a></li>
         <li><a href="/masterclasses" class="block text-dark-brown hover:text-gold transition-colors">Masterclasses</a></li>
         <li><a href="/booking" class="block bg-blush-pink text-white px-6 py-2 rounded-full text-center">Book Now</a></li>
         <li><a href="/contact" class="block text-dark-brown hover:text-gold transition-colors">Contact</a></li>

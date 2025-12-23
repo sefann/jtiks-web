@@ -28,16 +28,15 @@ const formatPrice = (price: number) => {
     </ul>
   </div>
   
-  <div class="flex items-center justify-between mb-4">
-    <span class="text-sm text-dark-brown/60">Duration: {masterclass.duration}</span>
-    <span class="text-lg font-heading font-semibold text-gold">{formatPrice(masterclass.price)}</span>
+  <div class="flex items-center justify-end mb-4">
+    <span class="text-lg font-heading font-semibold text-blush-pink">{formatPrice(masterclass.price)}</span>
   </div>
   
   <a 
     href={masterclass.paystackLink}
     target="_blank"
     rel="noopener noreferrer"
-    class="block w-full bg-gold text-white text-center px-6 py-3 rounded-full hover:bg-gold/90 transition-colors font-medium"
+    class="block w-full bg-blush-pink text-white text-center px-6 py-3 rounded-full hover:bg-blush-pink/90 transition-colors font-medium"
   >
     Enroll Now
   </a>
